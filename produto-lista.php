@@ -30,6 +30,7 @@
         <?php 
             endforeach;
         ?>
+     </table>
 <?php 
     include_once("rodape.php");
 
