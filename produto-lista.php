@@ -23,7 +23,7 @@
             <td><?=$produto["descricao"];?></td>
             <td><?=$produto["cat_nome"];?></td>
             <td>
-                <a href="produto-update-form.php" class="btn btn-primary">U</a>
+                <a href="produto-update-form.php?id=<?=$produto['id']?>" class="btn btn-primary">U</a>
             </td>
         </tr> 
 
