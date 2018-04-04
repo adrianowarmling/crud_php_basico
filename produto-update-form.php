@@ -1,38 +1,41 @@
-<?php 
+<?php
     include_once('cabecalho.php');
     include_once('conecta.php');
     include_once('produto-database.php');
 
-    $categorias = buscaCategorias($conexao);
+    $produto = buscarProduto($conexao,$_GET['id']);
+    $categorias = buscarCategorias($conexao);
 ?>
+    <form action="produto-update.php" method="POST">
+        <input type="hidden" id="id" name="id" class="form-control" value="<?=$produto[0]['id']?>">
+        
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" class="form-control" value="<?=$produto[0]['nome']?>">
+        </div>
+        <div class="form-group">
+            <label for="preco">Preço</label>
+            <input type="number" step="0.01" id="preco" name="preco" class="form-control" value="<?=$produto[0]['preco']?>">
+        </div>
+        <div class="form-group">
+            <label for="descricao">Descricao</label>
+            <input type="text" id="descricao" name="descricao" class="form-control" value="<?=$produto[0]['descricao']?>">
+        </div>
+        <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <select name="categoria" id="categoria" class="form-control">
+                
+                <?php foreach ($categorias as $categoria): ?>
+                    <option value="<?=$categoria['id']?>"><?=$categoria['nome']?></option>
+                <?php endforeach; ?>
 
+            </select>
+        </div>
 
-<form action = "produto-update.php" method="POST">
- <div class="form-group">
- <input type="hidden" name="id" value="<?= $_GET['id']?>" class="form-control" id="id"  >
-   <label for="nome">Nome</label>
-   <input type="text" name="nome" class="form-control" id="nome"  placeholder="Nome">
- </div>
- <div class="form-group">
-   <label for="preco">Preço</label>
-   <input type="number" name="preco" step="0.01" class="form-control" id="inputpreco" placeholder="Preco">
- </div>
- <div class="form-group">
-   <label for="descricao">Descrição</label>
-   <input type="text" name="descricao" class="form-control" id="descicao" placeholder="Descrição">
- </div> 
- <div class="form-group">
-   <label for="categoria">Categoria</label>
-   <select name="categoria" id="categoria" class="form-control">
-    
-    <?php foreach ($categorias as $categoria):?>
-      <option value="<?php $categoria['id']?>"><?=$categoria['nome']?></option>
-    <?php endforeach;?>
-
- </div>
- <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
+        <div class="form-group">
+            <button type="submit" class="btn btn-success totalwidth" >Alterar</button>
+        </div>
+    </form>
 <?php
     include_once('rodape.php');
 ?>

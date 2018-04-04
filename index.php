@@ -1,5 +1,5 @@
-<?php include_once("cabecalho.php");?>
-    
-    <h1>BEM VINDO!</h1>
+<?php include_once('cabecalho.php');?>
 
-<?PHP include_once("rodape.php");?>
+    <h1 class="meio">Bem vindo!</h1>
+
+<?php include_once('rodape.php'); ?>

@@ -1,9 +1,8 @@
-<?php 
-    $host ="localhost";
-    $user = "root";
-    $pass = "";
+<?php
+    $host = "cloud.matheusmiliorini.com.br";
+    $user = "minhaloja";
+    $pass = "essaeminhasenha";
     $db = "minhaloja";
 
-    $conexao = mysqli_connect("localhost","root","","minhaloja");
-
+    $conexao = mysqli_connect($host,$user,$pass,$user);
 ?>

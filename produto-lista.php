@@ -1,37 +1,38 @@
 <?php 
-        include_once("cabecalho.php");
-        include_once("conecta.php");
-        include_once("produto-database.php");
+    include_once('cabecalho.php');
+    include_once('conecta.php');
+    include_once('produto-database.php');
 ?>
 
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered meio">
         <tr>
             <td>Nome</td>
             <td>Preço</td>
             <td>Descrição</td>
             <td>Categoria</td>
-            <td>Ação</td>
-        </tr> 
-        <?php
-            $produtos = listaProdutos($conexao);
-            foreach ($produtos as $produto):
-        ?>
-
+            <td>Ações</td>
+        </tr>
         <tr>
-            <td><?=$produto["nome"];?></td>
-            <td><?=$produto["preco"];?></td>
-            <td><?=$produto["descricao"];?></td>
-            <td><?=$produto["cat_nome"];?></td>
+            <?php
+                $produtos = listarProdutos($conexao);
+                foreach ($produtos as $produto) :
+            ?>
+                
+            <td><?=$produto['nome']?></td>
+            <td><?=$produto['preco']?></td>
+            <td><?=$produto['descricao']?></td>
+            <td><?=$produto['cat_nome']?></td>
             <td>
-                <a href="produto-update-form.php?id=<?=$produto['id']?>" class="btn btn-primary">U</a>
+                <a href="produto-update-form.php?id=<?=$produto['id']?>" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span></a>
+                <a href="produto-delete-confirma.php?id=<?=$produto['id']?>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
             </td>
-        </tr> 
+        </tr>
+            <?php
+                endforeach;
+            ?>
+        
+    </table>
 
-        <?php 
-            endforeach;
-        ?>
-     </table>
 <?php 
-    include_once("rodape.php");
-
+    include_once('rodape.php');
 ?>
